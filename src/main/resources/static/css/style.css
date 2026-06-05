@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    padding: 24px;
+    font-family: sans-serif;
+}
+
+.two-col {
+    display: flex;
+    gap: 32px;
+}
+
+.main-col {
+    flex: 1;
+}
+
+.side-col {
+    flex: 0 0 200px;
+    background-color: #f0f2f5;
+    padding: 16px;
+    border-radius: 6px;
+}
+
+h2,
+h3 {
+    margin-top: 0;
+}
