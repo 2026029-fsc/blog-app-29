@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja" xmlns:th="https://www.thymeleaf.org">
 
 <head>
@@ -22,13 +22,15 @@
         <br>
         <p><a href="/blogs" class="btn">一覧に戻る</a></p>
     </div>
-    <form th:action="@{/blogs/delete/{id}/(id=${blog.id})}" method="post">
-        <button type="submit" class="delete-btn">削除</button>
+    <form th:action="'/blogs/delete/' + ${blog.id}" method="post" onsubmit="return confirm('この記事を削除しても良いですか？');">
+        <button type="submit">
+            削除
+        </button>
     </form>
 </body>
 
-</html> -->
-<!DOCTYPE html>
+</html>
+<!-- <!DOCTYPE html>
 <html lang="ja" xmlns:th="https://www.thymeleaf.org">
 
 <head>
@@ -47,8 +49,7 @@
         <h1 th:text="${blog.title}">タイトル</h1>
 
 
-        <form th:action="'/blogs/delete/' + ${blog.id}" method="post"
-            onsubmit="return confirm('この記事を削除しても良いですか？');">
+        <form th:action="'/blogs/delete/' + ${blog.id}" method="post" onsubmit="return confirm('この記事を削除しても良いですか？');">
             <button type="submit">
                 削除
             </button>
@@ -59,4 +60,4 @@
 
 </body>
 
-</html>
+</html> -->
