@@ -1,28 +1,38 @@
 package com.example.blog_app;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+// import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+// import org.springframework.web.bind.annotation.PostMapping;
+// import org.springframework.web.bind.annotation.RequestBody;
+// import org.springframework.web.bind.annotation.PostMapping;
+// import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class BlogController {
+    private final BlogService blogService;
+
+    public BlogController(BlogService blogService) {
+        this.blogService = blogService;
+    }
 
     @GetMapping("/")
     public String blog() {
-        return "redirect:/blogas";
+        return "redirect:/blog";
     }
 
-    @GetMapping("/blogs")
+    @GetMapping("/blog")
     public String showBlogPage() {
 
-        return "blogs";
+        return "blog";
     }
 
     @GetMapping("/prof")
@@ -38,16 +48,16 @@ public class BlogController {
     }
 
     @GetMapping("/itiran")
-    public String showitiranPage() {
-
+    public String showitiranPage(Model model) {
+        model.addAttribute("blogs", blogService.showitiranPage());
         return "blog/itiran";
     }
 
-    @Autowired
-    private BlogService blogService;
-
-    public void BlogController(BlogService blogService) {
-        this.blogService = blogService;
+    @GetMapping("/blogs")
+    public String showList(Model model) {
+        List<Blog> blogList = blogService.getBlogList();
+        model.addAttribute("blogList", blogList);
+        return "blog";
     }
 
     @PostMapping("/blog/register")
@@ -58,22 +68,20 @@ public class BlogController {
 
         blogService.tourokuBlog(title, text);
 
+        return "redirect:/itiran";
+    }
+
+    @GetMapping("/blogs/{id}")
+    public String showDetail(@PathVariable("id") Long id, Model model) {
+        Blog blog = blogService.getBlogById(id);
+        model.addAttribute("blog", blog);
+        return "blog/detail";
+    }
+
+    @PostMapping("/blogs/delete/{id}")
+    public String delete(@PathVariable("id") Long id) {
+        blogService.deleteBlog(id);
         return "redirect:/blogs";
-        // @GetMapping("/blogs")
-        // public String creat(@ModelAttribute BlogForm form) {
-        // blogService.register(form);
-        // return "redirect:/blogs";
-        // }
-
-        // @GetMapping("/blogs/{id}")
-        // public String detail(@PathVariable Long id, Model model) {
-        // Optional<blog> blogOpt = blogService.findById(id);
-        // if (blogOpt.isempty()) {
-        // return "redirect:/blogs";
-        // }
-        // model.addAttribute(blogOpt.get());
-        // return "blogs/detail";
-        // }
-
     }
 }
+

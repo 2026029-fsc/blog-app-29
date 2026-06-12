@@ -1,0 +1,62 @@
+<!-- <!DOCTYPE html>
+<html lang="ja" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ブログ詳細</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style1.css">
+</head>
+
+<body>
+
+    <div th:replace="~{header :: common-header}"></div>
+
+
+
+    <div class="container">
+        <h1 th:text="${blog.title}">タイトル</h1>
+        <hr>
+        <p th:text="${blog.text}" style="white-space: pre-wrap;">本文</p>
+
+        <br>
+        <p><a href="/blogs" class="btn">一覧に戻る</a></p>
+    </div>
+    <form th:action="@{/blogs/delete/{id}/(id=${blog.id})}" method="post">
+        <button type="submit" class="delete-btn">削除</button>
+    </form>
+</body>
+
+</html> -->
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブログ詳細</title>
+    <link rel="stylesheet" href="/css/style1.css">
+</head>
+
+<body>
+
+    <div th:replace="~{header :: common-header}"></div>
+
+    <div class="container">
+
+        <h1 th:text="${blog.title}">タイトル</h1>
+
+
+        <form th:action="'/blogs/delete/' + ${blog.id}" method="post"
+            onsubmit="return confirm('この記事を削除しても良いですか？');">
+            <button type="submit">
+                削除
+            </button>
+        </form>
+
+        <p style="text-align: center;"><a href="/blogs">一覧に戻る</a></p>
+    </div>
+
+</body>
+
+</html>

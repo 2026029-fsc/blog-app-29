@@ -1,0 +1,49 @@
+<!-- <!DOCTYPE html>
+<html lang="ja" xmlns:th="https://www.thymeleaf.org">
+
+<scm-history-item:c%3A%5CUsers%5CAdmin2026%5CDesktop%5Cblog-app?%7B%22repositoryId%22%3A%22scm0%22%2C%22historyItemId%22%3A%2221e58e66695eb848e312efd61ebf226867920fa0%22%2C%22historyItemDisplayId%22%3A%2221e58e6%22%7Dhead>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style1.css">
+    </head>
+
+    <body>
+
+        <a href="/toukou">投稿</a><br>
+        <a href="/prof">プロフィール</a><br>
+        <a href="/itiran">一覧</a>
+
+
+
+
+    </body>
+
+</html> -->
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブログメニュー</title>
+    <link rel="stylesheet" href="/css/style1.css">
+</head>
+
+<body>
+    <div th:replace="~{header :: common-header}"></div>
+    <header class="site-header">
+        <div class="header-logo">ブログ</div>
+    </header>
+
+    <div class="menu-container">
+        <h1>ブログ管理メニュー</h1>
+        <nav class="menu-navigation">
+            <a href="/toukou" class="menu-btn"> 新規投稿</a>
+            <a href="/itiran" class="menu-btn"> 記事一覧</a>
+            <a href="/prof" class="menu-btn">プロフィール</a>
+        </nav>
+    </div>
+
+</body>
+
+</html>

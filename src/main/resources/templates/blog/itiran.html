@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="https://www.thymeleaf.org">
 
-<scm-history-item:c%3A%5CUsers%5CAdmin2026%5CDesktop%5Cblog-app?%7B%22repositoryId%22%3A%22scm0%22%2C%22historyItemId%22%3A%2221e58e66695eb848e312efd61ebf226867920fa0%22%2C%22historyItemDisplayId%22%3A%2221e58e6%22%7Dhead>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
-    </head>
+<!-- <scm-history-item:c%3A%5CUsers%5CAdmin2026%5CDesktop%5Cblog-app?%7B%22repositoryId%22%3A%22scm0%22%2C%22historyItemId%22%3A%2221e58e66695eb848e312efd61ebf226867920fa0%22%2C%22historyItemDisplayId%22%3A%2221e58e6%22%7Dhead> -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="/css/style2.css">
+<link rel="stylesheet" href="/css/style1.css">
+</head>
 
-    <body>
-    
-    </body>
+<body>
+    <div th:replace="~{header :: common-header}"></div>
+    <div class="container">
+        <h1>ブログ記事一覧</h1>
+
+
+        <hr>
+
+        <div th:each="blog : ${blogs}" class="blog-card">
+
+            <!-- <h2 class="blog-title" th:text="${blog.title}">タイトル</h2> -->
+            <h2 class="blog-title">
+                <a th:href="@{/blogs/{id}(id=${blog.id})}" th:text="${blog.title}">ここにタイトルが入ります</a>
+            </h2>
+            <p class="blog-text" th:text="${blog.text}">本文</p>
+        </div>
+
+
+
+
+        <div th:if="${#lists.isEmpty(blogs)}">
+            <p>まだ記事がありません。</p>
+        </div>
+    </div>
+</body>

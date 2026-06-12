@@ -4,15 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style4.css">
+    <link rel="stylesheet" href="/css/style1.css">
 </head>
 
 <body>
+    <div th:replace="~{header :: common-header}"></div>
     <form action="/blog/register" method="post">
-
+        <h1>新規投稿</h1>
         <!-- <input type="number" name="id" required placeholder="ID"><br> -->
         <input type="text" name="title" required placeholder="タイトル"><br>
-        <input type="text" name="text" required placeholder="本文"></textarea><br>
+        <textarea class="text" type="text" name="text" required placeholder="本文"></textarea><br>
         <button type="submit">投稿</button>
     </form>
 

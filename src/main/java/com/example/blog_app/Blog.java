@@ -1,11 +1,15 @@
 package com.example.blog_app;
 
 public class Blog {
-    private long id;
+    private  long id;
     private String title;
     private String text;
 
-    public Blog(long id, String title, String text) {
+    public Blog() {
+
+    }
+
+    public Blog(Long id, String title, String text) {
         this.id = id;
         this.text = text;
         this.title = title;
@@ -34,6 +38,5 @@ public class Blog {
     public void setTitle(String title) {
         this.title = title;
     }
-    public Blog() {
-    }
+
 }
